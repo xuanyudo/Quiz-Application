@@ -1,0 +1,45 @@
+<div *ngIf="!finished; then notFinish else finish">
+</div>
+<ng-template #notFinish>
+
+    <form #questionRef="ngForm" (ngSubmit)="checkAns(questionRef.value)" autocomplete="off" novalidate>
+        <h2>Question {{cur_question.id}}/{{questions.length}}</h2>
+        <p>{{cur_question.question}}</p>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action list-group-item-alice"
+                *ngFor="let option of cur_question.options;let i=index"><label class="ml-2 w-100">
+                    <input type="radio" [checked]="i+1==cur_question.selected" [name]="cur_question.id" [value]="i+1" [(ngModel)]="cur_question.selected"> {{option}}</label></li>
+        </ul>
+        <small class="text-danger" *ngIf="invalid"> Please select something</small>
+        
+        <input *ngIf="hasNextQuestion" class="float-right btn btn-primary ml-2" type="button" value="Next Question" (click)="checkAns(questionRef.value)">
+        <input *ngIf="!hasNextQuestion" class="float-right btn btn-success ml-2" type="submit" value="Submit">
+        <input *ngIf="cur_question.id!=1" class="float-left btn btn-primary" type="button" value="Previous Question" (click)="previous()">
+        
+    </form>
+
+</ng-template>
+
+<ng-template #finish>
+    <div id="top" class="text-center">
+        <h2>You had completed the quiz</h2>
+        <h4 class="mb-5">Your got {{correct}} out of {{questions.length}} question correct</h4>
+        <button class="float-right btn btn-warning" (click)="resetAll()">Restart</button>
+        <a class="float-right btn btn-primary" href="/">Home</a>
+    </div>
+
+    <form *ngFor="let question of questions" #questionRef="ngForm" autocomplete="off"
+        novalidate>
+        <h2>Question {{question.id}}/{{questions.length}}</h2>
+        <p>{{question.question}}</p>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action" *ngFor="let option of question.options;let i=index"
+                [ngClass]="{'list-group-item-danger':i+1==question.selected && question.selected!=question.answer,'list-group-item-success':i+1==question.answer,'list-group-item-alice':i+1!=question.selected && i+1!=question.answer}">
+                <label class="ml-2 w-100">
+                    <input type="radio" [name]="question.id" [value]="i+1" [checked]="question.selected==(i+1)"
+                        disabled> {{option}}</label></li>
+        </ul>
+    </form>
+    <a href="#top" class="float-right btn btn-primary">Back to Top</a>
+    
+</ng-template>

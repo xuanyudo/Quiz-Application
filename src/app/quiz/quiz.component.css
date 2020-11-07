@@ -1,0 +1,6 @@
+.list-group-item-alice{
+    background-color: aliceblue;
+}
+.list-group-item-alice:hover{
+    background-color: rgb(212, 222, 231);
+}

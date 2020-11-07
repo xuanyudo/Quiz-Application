@@ -1,0 +1,55 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "question": "Which of the following input type only allow number?",
+            "options": [
+                "text",
+                "number",
+                "int",
+                "submit"
+            ],
+            "answer": 2
+        },
+        {
+            "id": 2,
+            "question": "Inside which HTML element do we put the JavaScript?",
+            "options": [
+                "<script>",
+                "<javascript>",
+                "<scripting>",
+                "<js>"
+            ],
+            "answer": 1
+        },
+        {
+            "id": 3,
+            "question": "Where is the correct place to insert a JavaScript?",
+            "options": [
+                " The <head> section",
+                " Both the <head> section and the <body> section are correct",
+                " The <body> section"
+            ],
+            "answer": 2
+        },
+        {
+            "id": 4,
+            "question": "What is the correct syntax for referring to an external script called xxx.js?",
+            "options": [
+                " <script name='xxx.js'>",
+                " <script src='xxx.js'>",
+                " <script href='xxx.js'>"
+            ],
+            "answer": 2
+        },
+        {
+            "id": 5,
+            "question": "The external JavaScript file must contain the <script> tag.",
+            "options": [
+                "True",
+                "False"
+            ],
+            "answer": 1
+        }
+    ]
+}
